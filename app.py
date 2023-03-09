@@ -1,27 +1,10 @@
-# git commit -m "Initial Commit"  # for taking files to staging area
-# for recovering file from last commit git checkout filename and -f for all files
-# git diff tells the difference within the files after being commited
-# git diff --staged tells the differnces within the last commit 
-# git rm filename removes and deletes the files permanently
-# git rm --cached filenmae removes the files from the staged area but remain at hard disk
-# touch .gitignore filename will make a file in which we can write the name of the file which we don't want to push 
-# git branch branchname will create a new VM sort of thing so that we can experiment with the project 
-# without affecting the actual project.
-# we can access brach by git checkout branchname and list all branches by git branch 
-# can merge any new branch by git merge branchname so that main branch will change
-# git remote add origin https://github.com/ursaj123/Recommender-System.git will add my local repo to
-# github.
-# can add ssh if we don't have access to the github repo, by following commands given in documentation
-
-import streamlit as st 
+import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle 
 import requests
 
-# first assests.get('https://api.themoviedb.org/3/movie/{}?api_key=1764936a71137b0074282bd7b7a64dc1&language=en-US'.format(movie_id))
-    data = request.json() # now it will be a dictionary
-    # now there is a pinging the title
+# first assinging the title
 st.title("Movie Recommender System")
 
 # then gathering all the required resources
@@ -30,7 +13,9 @@ movies_list = movies['title'].values
 similarity_matrix = pickle.load(open('similarity.pkl', 'rb'))
 
 def fetch_poster(movie_id):
-    request = requoster path attribute in data
+    request = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=1764936a71137b0074282bd7b7a64dc1&language=en-US'.format(movie_id))
+    data = request.json() # now it will be a dictionary
+    # now there is a poster path attribute in data
     return 'https://image.tmdb.org/t/p/w500' + data['poster_path']
     # so this will be a complete path 
     
